@@ -1,0 +1,95 @@
+﻿@using IMDB.Models
+@model IEnumerable<Movie>
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/CSS/Site.css" rel="stylesheet" />
+
+    <title>HomePage</title>
+</head>
+<body>
+
+    @section navbar{}
+        <div class="mycontainer">
+            <div class="content-container">
+                <div class="featured-content">
+
+                    <img class="featured-title" src="~/Content/Images/img2.jpg" alt="Dr.Strange">
+                    <p class="featured-desc">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
+                        deserunt nam assumenda ipsa eligendi dolore, ipsum id fugiat quo enim impedit, laboriosam omnis
+                        minima voluptatibus incidunt. Accusamus, provident.
+                    </p>
+                    @Html.ActionLink("WATCH", "FilmDetails", new {id = 1006 }, new { @class = "featured-button" })
+ 
+                </div>
+                <div class="movie-list-container">
+                    <h1 class="movie-list-title">NEW RELEASES</h1>
+                    <div class="movie-list-wrapper">
+                        <div class="movie-list">
+                            
+                            @{
+                                int nOfCards = 0;
+
+                                foreach (var item in Model.Reverse())
+                                {
+                                    if (nOfCards < 5)
+                                    {
+                                        nOfCards += 1;
+                                <div class="movie-list-item">
+                                    <img class="movie-list-item-img" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.Img))" alt="@item.Movie_Name" />
+                                    <span class="movie-list-item-title">@item.Movie_Name</span>
+                                    <p class="movie-list-item-desc">
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
+                                        deserunt nam assumenda ipsa eligendi dolore.
+                                    </p>
+
+                                    @Html.ActionLink("WATCH", "FilmDetails", new { id = item.Movie_ID }, new { @class = "movie-list-item-button" })
+                                </div>
+                                    }
+                                    else { break; }
+
+                                }
+                                }
+
+                                
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="slideshow-container">
+            @{
+                int nOfSlides = 0;
+                foreach (var item in Model)
+                {
+                    if (nOfSlides < 10)
+                    {
+                        nOfSlides += 1;
+                        <div class="mySlides1 fade">
+                            <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.Img))" style="width:640px ; height:320px; object-fit:contain;">
+                            <div class="text">@item.Movie_Name</div>
+                        </div>
+                    }
+                    else { break; }
+                }
+            }
+
+            <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+        </div>
+        <br>
+
+        <script src="~/Content/JS/Site.js"></script>
+    
+</body>
+</html>

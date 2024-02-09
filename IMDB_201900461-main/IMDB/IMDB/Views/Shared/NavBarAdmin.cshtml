@@ -1,0 +1,62 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/CSS/NavBar.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div><a href="~/AdminView/AdminHomePage"><img src="~/Content/Images/imdb-logo.svg" class="logo"></a></div>
+
+            <div class="menu-container">
+                <ul class="menu-list">
+                    <li>
+                        <div class="dropdown">
+                            <a href="#" title="Movies section" class="admin-menu">Movies</a>
+                            <div class="dropdown-content">
+                                @Html.ActionLink("Show All Movies", "Movies")
+                                @Html.ActionLink("Add New Movie", "AddMovies")
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <a href="#" title="Actors section" class="admin-menu">Actors</a>
+                            <div class="dropdown-content">
+                                @Html.ActionLink("Show All Actors", "Actors")
+                                @Html.ActionLink("Add New Actor", "AddActors")
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <a href="#" title="Directors section" class="admin-menu">Directors</a>
+                            <div class="dropdown-content">
+                                @Html.ActionLink("Show All Directors", "Directors")
+                                @Html.ActionLink("Add New Director", "AddDirectors")
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                @Html.ActionLink("Log out", "Login","LoginRegister")
+            </div>
+            <div class="profile-container">
+                <img class="profile-picture" src="~/Content/Images/man.png" alt="">
+                <div class="profile-text-container">
+                    <span class="profile-text">Admin</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

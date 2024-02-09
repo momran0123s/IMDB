@@ -1,0 +1,57 @@
+﻿@model IEnumerable<IMDB.Models.Actor>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/CSS/ShowActors.css" rel="stylesheet" />
+    <title>ActorsPage</title>
+</head>
+<body>
+    @Html.Partial("NavBarAdmin")
+    <div class="big">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Age)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td class="button">
+                    @Html.ActionLink("Edit", "EditActor", new { id = item.Actor_ID })
+                </td>
+                <td class="button">
+                    @Html.ActionLink("Delete", "DeleteActor", new { id = item.Actor_ID })
+                </td>
+            </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>
+
+

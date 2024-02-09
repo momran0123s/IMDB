@@ -1,0 +1,49 @@
+﻿@model IMDB.Models.User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMDB Login</title>
+    <link href="~/Content/CSS/login.css" rel="stylesheet" />
+
+</head>
+<body>
+    <span class="Logo">
+        <a href="~/Home/Home"> <img src="~/Content/Images/imdb-logo.svg" class="logo" alt="IMDb.com logo"></a>
+    </span>
+
+    <div class="All">
+        @using (Html.BeginForm("Login", "LoginRegister", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+        <div class="Form-Details">
+            <h1 class="a-spacing small"> Login </h1>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Email)
+                @Html.TextBoxFor(m => m.Email, new { @class = "textinput", size = "50" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Password)
+                @Html.PasswordFor(m => m.Password, new { @class = "textinput", size = "50" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
+
+            <input type="submit" id="submit-btn" class="Submit" required value="Sign-In" />
+            <h4 style="color:red;">@TempData["Message"]</h4>
+            <h4 style="color:red;">@TempData["Message2"]</h4>
+            <div class="register-Link">
+                <p>New to IMDb?  @Html.ActionLink("Create your IMDb Account", "Register") </p>
+            </div>
+        </div>
+        }
+    </div>
+</body>
+</html>

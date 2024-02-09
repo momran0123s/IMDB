@@ -1,0 +1,161 @@
+﻿* {
+    margin: 0;
+    box-sizing: border-box
+}
+
+@font-face {
+    font-family: "Cairo", sans-serif;
+    src: url(../Content/Font/static/Cairo-Bold.ttf);
+}
+
+body {
+    font-family: 'Cairo',sans-serif;
+    background-color:#1a1a1a;
+}
+/* form div style */
+.Form-Container {
+    margin-top:50px;
+    border:3px solid rgb(245,197,24);
+    border-radius: 15px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin-left:17%;
+    width:1000px;
+    height:600px;
+}
+/* head div style */
+.HeadText {
+    text-shadow: 0 0 5px white, 0 0 8px white;
+}
+.Head-Container {
+    border: 3px solid black;
+    padding: 5px;
+    background-color: rgb(245,197,24);
+    text-align: center;
+}
+/* change profile img style */
+.ChangeImg-Container {
+    width: 250px;
+    float: left;
+    margin-top: 10px;
+    margin-left: 80px;
+}
+.ImgStyle {
+    object-fit: cover;
+    width: 165px;
+    height: 165px;
+    box-shadow: 0 0 10px 0 rgba(255,255,255,.35);
+    border: 3px solid black;
+    border-radius: 100px;
+}
+.ChangeImgBtn {
+    border: 2px solid black;
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 119px;
+    padding: 4px;
+    border-radius: 9px;
+    background-color: rgb(245,197,24);
+}
+.ChangeImgBtn:hover {
+    background-color: black;
+}
+.ChangeImgBtnText:hover {
+    color: rgb(245,197,24);
+}
+.UploadImgInput {
+    display: none;
+}
+/* personal info div style */
+.PersonalInfo-Container {
+    margin-top: 30px;
+    width: 500px;
+    float: left;
+}
+/* personal info head style */
+.PersonalInfoHead-Container {
+    border: 3px solid black;
+    padding: 5px;
+    background-color: grey;
+    display: inline-block;
+    width: 500px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+/* personal information inputs style */
+.PresonalInfoInput[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.PresonalInfoInput[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.PresonalInfoInput[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.PresonalInfoInput[type=submit]:hover {
+    background-color: #45a049;
+}
+/* save changes button style */
+.SaveChangesBtn {
+    background-color: rgb(245,197,24);
+    margin-top: 20px;
+    margin-left: 360px;
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+    border: 2px solid black;
+    border-radius: 9px;
+    color: black;
+    display: inline-flex;
+    text-align:center;
+
+}
+.SaveChangesBtn:hover {
+    background-color:black;
+    color:rgb(245,197,24);
+}
+/* favorite websites Button Style */
+.GoFavoWebsiteBtn {
+    border: 2px solid black;
+    width: 130px;
+    text-align:center;
+    padding: 6px;
+    border-radius: 9px;
+    background-color: rgb(245,197,24);
+    margin-left:15%;
+    margin-top:2%;
+    text-decoration:none;
+    color:black;
+    height:50px;
+    display:inline-flex;
+    
+}
+
+.GoFavoWebsiteBtn:hover {
+    background-color: black;
+    color: rgb(245,197,24);
+}
+/*.......................*/
+.text-danger {
+    color:red;
+}

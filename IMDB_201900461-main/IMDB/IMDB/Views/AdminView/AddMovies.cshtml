@@ -1,0 +1,75 @@
+﻿@model IMDB.ViewModel.Movie_Director
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/CSS/AddMovies.css" rel="stylesheet" />
+    <title>AddMoviesPage</title>
+</head>
+<body>
+     @Html.Partial("NavBarAdmin")
+    <div class="addform">
+        <h1>Add Movie</h1>
+        @using (Html.BeginForm("AddMovies", "AdminView", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.movie.Director_ID, "Director", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+
+                        @Html.DropDownListFor(model => model.movie.Director_ID, new SelectList(Model.directors, "Director_ID", "FName"), "Select Director Name", htmlAttributes: new { @class = "DropList" })
+                        @Html.ValidationMessageFor(model => model.movie.Director_ID, "", new { @class = "text-danger" })
+                        
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    @Html.LabelFor(model => model.movie.Movie_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.movie.Movie_Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.movie.Movie_Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.movie.Movie_TLink, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.movie.Movie_TLink, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.movie.Movie_TLink, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    @Html.LabelFor(model => model.movie.Img, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <input type="file" name="image" />
+                    <h4 style="color:red;">@TempData["Message"]</h4>
+                </div>
+
+
+
+                <br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</body>
+</html>

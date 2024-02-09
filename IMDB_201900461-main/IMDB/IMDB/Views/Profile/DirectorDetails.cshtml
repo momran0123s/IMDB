@@ -1,0 +1,39 @@
+﻿@using IMDB.ViewModel
+@model DirectorDetailsViewModel
+
+@{
+    Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+
+    <link href="~/Content/CSS/DirectorDetails.css" rel="stylesheet" />
+    <title>ActorDetails</title>
+</head>
+<body>
+    @section navbar{}
+    <!--............................... Form & head .............................-->
+    <div class="Form-Container">
+        <div class="Head-Container"><h1 class="HeadText">@Model.Director.FName @Model.Director.LName</h1></div>
+
+        <!--...............................................-->
+        @foreach (var item in Model.Movies)
+        {
+            int counter = 1; 
+            <div class="Movie-Container">
+                @item.Movie_Name
+            </div>
+            counter++;
+        }
+        <!--............................. Back Button ........................-->
+
+        @Html.ActionLink("Back", "Home", "Home", null, new { @class = "BackBtn" })
+    </div>
+</body>
+</html>

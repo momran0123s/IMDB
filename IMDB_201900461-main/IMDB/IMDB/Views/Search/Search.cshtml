@@ -1,0 +1,91 @@
+﻿@using IMDB.ViewModel
+@model SearchViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Search</title>
+    <link href="~/Content/CSS/Search.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href="@Url.Action("Home","Home")">IMDb</a>
+        <div class="search-container">
+            @using (Html.BeginForm())
+            {
+                <input class="input" type="text" name="SearchValue" />
+                <input type="submit" value="Search" />
+            }
+        </div>
+    </div>
+
+    <table>
+        <caption>Actors and Directors</caption>
+        <thead>
+            <tr>
+                <th scope="col">Type</th>
+                <th scope="col">name</th>
+                <th scope="col">Age</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model.Actors != null) { 
+                foreach (var item in Model.Actors)
+                {
+                    <tr>
+                        <td>actor</td>
+                        <td> @Html.ActionLink(item.FName + " " + item.LName, "ActorDetails", "Profile", new { id = item.Actor_ID }, new { @class = "ActorLink" })</td>
+                        <td>@item.Age</td>
+                    </tr>
+                    }
+
+                }
+
+                if (Model.Directors != null) { 
+                foreach (var item in Model.Directors)
+                {
+                    <tr>
+                        <td>director</td>
+                        <td>@Html.ActionLink(item.FName + " " + item.LName, "DirectorDetails", "Profile", new { id = item.Director_ID }, new { @class = "DirectorLink" })</td>
+                        <td>@item.Age</td>
+                    </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+    <table>
+        <caption>Movies</caption>
+        <thead>
+            <tr>
+                <th scope="col">Movie name</th>
+                <th scope="col">Image</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            @{
+                if (Model.Movies != null)
+                {
+                    foreach (var item in Model.Movies)
+                    {
+                    <tr>
+
+                        <td>@Html.ActionLink(item.Movie_Name, "FilmDetails", "Home", new { id = item.Movie_ID }, new { @class = "Movielink" })</td>
+                        <td><img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.Img))" alt="@item.Movie_Name" width="100" height="100" /></td>
+                    </tr>
+                        }
+                    }
+                }
+        </tbody>
+    </table>
+</body>
+</html>

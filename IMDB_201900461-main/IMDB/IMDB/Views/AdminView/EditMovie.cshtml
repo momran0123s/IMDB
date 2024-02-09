@@ -1,0 +1,84 @@
+﻿@model IMDB.ViewModel.Movie_Director
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/CSS/Edit.css" rel="stylesheet" />
+    <title>EditMovie</title>
+</head>
+<body>
+
+    @Html.Partial("NavBarAdmin")
+
+    <div class="editform">
+
+        @using (Html.BeginForm("EditMovie", "AdminView", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h1>Edit Movie</h1>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.movie.Movie_ID)
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.directors, "Director", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+
+                        @Html.DropDownListFor(model => model.movie.Director_ID, new SelectList(Model.directors, "Director_ID", "FName"), "Select Director Name", htmlAttributes: new { @class = "DropList" })
+                        @Html.ValidationMessageFor(model => model.movie.Director_ID, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+
+                <div class="formgroup">
+                    @Html.LabelFor(model => model.movie.Movie_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.movie.Movie_Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.movie.Movie_Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="ChangeImg-Container">
+                    <img class="ImgStyle" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.movie.Img))" id="output" width="200" />
+                    <br />
+                    <div class="ChangeImgBtn">
+                        <label for="file">
+                            <span class="ChangeImgBtnText">Change Image</span>
+                        </label>
+                    </div>
+                    <input class="UploadImgInput" id="file" type="file" name="MovieImage" onchange="loadFile(event)" />
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.movie.Movie_TLink, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.movie.Movie_TLink, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.movie.Movie_TLink, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="submit-button-container">
+                        <input type="submit" value="Save" class="submit-button" />
+                    </div>
+                </div>
+            </div>
+        }
+        
+
+
+    </div>
+    <script src="~/Content/JS/UploadImg.js"></script>
+</body>
+</html>
